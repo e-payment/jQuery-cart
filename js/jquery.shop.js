@@ -34,8 +34,9 @@
 			this.paypalCurrency = "THB"; // PayPal's currency code
 			this.paypalBusinessEmail = "payment@myshop.com"; // Your Business PayPal's account email address
 			//this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
-			this.paypalURL = 'http://127.0.0.1:8088/sa-wm/payment_debug.php';
-			this.payPalTotalAmount = 1572.00; // TODO
+			
+			//this.paypalURL = 'https://testsecureacceptance.cybersource.com/pay';
+			this.paypalURL = 'http://127.0.0.1:9080/payment_debug.php';
 
 			// Object containing patterns for form validation
 			this.requiredFields = {
@@ -116,8 +117,8 @@
 					insertBefore( "#paypal-btn" );
 					$( "<div/>" ).html( "<input type='hidden' name='item_" + n + "_price' value='" + self._formatNumber( price, 2 ) + "'/>" ).
 					insertBefore( "#paypal-btn" );
-					//$( "<div/>" ).html( "<input type='hidden' name='shipping_" + n + "' value='" + self._formatNumber( singShipping, 2 ) + "'/>" ).
-					//insertBefore( "#paypal-btn" );
+					$( "<div/>" ).html( "<input type='hidden' name='shipping_" + n + "' value='" + self._formatNumber( singShipping, 2 ) + "'/>" ).
+					insertBefore( "#paypal-btn" );
 					
 				}				
 				
