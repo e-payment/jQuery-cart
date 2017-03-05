@@ -35,6 +35,7 @@
 			this.paypalBusinessEmail = "payment@myshop.com"; // Your Business PayPal's account email address
 			//this.paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr"; // The URL of the PayPal's form
 			this.paypalURL = 'http://127.0.0.1:8088/sa-wm/payment_debug.php';
+			this.payPalTotalAmount = 1572.00; // TODO
 
 			// Object containing patterns for form validation
 			this.requiredFields = {
@@ -92,30 +93,33 @@
 				var singShipping = Math.floor( numShipping / cartItems.length );
 				
 				$form.attr( "action", self.paypalURL );
-				$form.find( "input[name='business']" ).val( self.paypalBusinessEmail );
-				$form.find( "input[name='currency_code']" ).val( self.paypalCurrency );
+
+				//$form.find( "input[name='business']" ).val( self.paypalBusinessEmail );
+
+				$form.find( "input[name='reference_number']" ).val( new Date().getTime());
+				$form.find( "input[name='amount']" ).val($("#stotal").html());
+				$form.find( "input[name='shipping_fee']" ).val($("#sshipping").html());
+				$form.find( "input[name='currency']" ).val( self.paypalCurrency );
 				
-				for( var i = 0; i < cartItems.length; ++i ) {
+				for (var i = 0; i < cartItems.length; ++i ) {
 					var cartItem = cartItems[i];
-					var n = i + 1;
+					var n = i;// + 1;
 					var name = cartItem.product;
 					var price = cartItem.price;
 					var qty = cartItem.qty;
 					
-					$( "<div/>" ).html( "<input type='hidden' name='quantity_" + n + "' value='" + qty + "'/>" ).
+					$( "<div/>" ).html( "<input type='hidden' name='item_" + n + "_qty' value='" + qty + "'/>" ).
 					insertBefore( "#paypal-btn" );
-					$( "<div/>" ).html( "<input type='hidden' name='item_name_" + n + "' value='" + name + "'/>" ).
+					$( "<div/>" ).html( "<input type='hidden' name='item_" + n + "_name' value='" + name + "'/>" ).
 					insertBefore( "#paypal-btn" );
-					$( "<div/>" ).html( "<input type='hidden' name='item_number_" + n + "' value='SKU " + name + "'/>" ).
+					$( "<div/>" ).html( "<input type='hidden' name='item_" + n + "_sku' value='SKU " + name + "'/>" ).
 					insertBefore( "#paypal-btn" );
-					$( "<div/>" ).html( "<input type='hidden' name='amount_" + n + "' value='" + self._formatNumber( price, 2 ) + "'/>" ).
+					$( "<div/>" ).html( "<input type='hidden' name='item_" + n + "_price' value='" + self._formatNumber( price, 2 ) + "'/>" ).
 					insertBefore( "#paypal-btn" );
-					$( "<div/>" ).html( "<input type='hidden' name='shipping_" + n + "' value='" + self._formatNumber( singShipping, 2 ) + "'/>" ).
-					insertBefore( "#paypal-btn" );
+					//$( "<div/>" ).html( "<input type='hidden' name='shipping_" + n + "' value='" + self._formatNumber( singShipping, 2 ) + "'/>" ).
+					//insertBefore( "#paypal-btn" );
 					
-				}
-				
-				
+				}				
 				
 			}
 		},

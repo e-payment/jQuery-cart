@@ -43,24 +43,28 @@
 		 	<h2>Your Data</h2>
 		 	<div id="user-details-content"></div>
 		 </div>
-		 
-		 
-		 
-		 
-<form id="paypal-form" action="" method="post">
-	<input type="hidden" name="cmd" value="_cart" />
-	<input type="hidden" name="upload" value="1" />
-	<input type="hidden" name="business" value="" />
-        
-	<input type="hidden" name="currency_code" value="" />
-	<input type="submit" id="paypal-btn" class="btn" value="Pay with PayPal" />
-</form>
-		 
-		 
-	</div>
-	
-	
 
+		<!--
+		<form id="paypal-form" action="" method="post">
+			<input type="hidden" name="cmd" value="_cart" />
+			<input type="hidden" name="upload" value="1" />
+			<input type="hidden" name="business" value="" />
+		        
+			<input type="hidden" name="currency_code" value="" />
+			<input type="submit" id="paypal-btn" class="btn" value="Pay with PayPal" />
+		</form>
+		-->
+		<div style="text-align: center">
+			<form id="paypal-form" action="" method="post">
+				<input type="hidden" name="reference_number" value="" />
+				<input type="hidden" name="amount" value="" />
+				<input type="hidden" name="shipping_fee" value="" />
+				<input type="hidden" name="currency" value="" />
+				<input type="submit" id="paypal-btn" class="btn" value="Pay with CyberSource" />
+				<p>
+			</form>
+		</div>
+	</div>
 </div>
 
 <footer id="site-info">

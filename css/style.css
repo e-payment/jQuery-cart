@@ -268,14 +268,16 @@ body#checkout-page #site-info {
 	margin-bottom: 1em;
 }
 
-#checkout-order-form label {
-	display: block;
+#fieldset-billing label, #fieldset-shipping label {
+
 	font-weight: bold;
 	margin-bottom: 0.3em;
 	text-align: left;
+	width: 150px;
 }
 
-#checkout-order-form input[type="text"] {
+#checkout-order-form input[type="text"],
+#checkout-order-form input[type="number"] {
 	width: 200px;
 	display: block;
 	background: #fff;
@@ -338,6 +340,10 @@ body#checkout-page #site-info {
 	margin-bottom: 0.5em;
 	padding-bottom: 0.3em;
 	border-bottom: 1px solid #ddd;
+}
+
+.pqty, .pprice {
+	text-align: center;
 }
 
 #paypal-form {
