@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Sign</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1" />
+</head>
+<body>
+
+<div>
+	signature: <span id="signature"></span>
+</div>
+
+<script type="text/javascript" src="js/hmac-sha256.js"></script>
+<script type="text/javascript" src="js/enc-base64-min.js"></script>
+<script type="text/javascript" src="js/cybs.js"></script>
+<script type="text/javascript">
+
+	var params = {
+
+		profile_id: PROFILE_ID,
+		access_key: ACCESS_KEY,
+		transaction_uuid: 'uuid', // TODO
+		signed_field_names: 'profile_id,access_key,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency',
+		unsigned_field_names: 'signature',
+		
+		signed_date_time: new Date().toISOString(),
+		locale: 'en-us',
+		transaction_type: 'sale',
+
+		reference_number: '20170305001',
+		amount: '1200.00',
+		currency: 'THB',
+	};
+
+	var unsigned_fields = {
+
+	}
+
+	var sign = document.getElementById('signature');
+
+	var signature = Cybs.sign(params);
+	sign.innerHTML = signature;
+
+	// TODO: MAPPING KEYS & VALUES FOR SUBMIT
+
+	deviceFingerprint('TODO_SESSION_ID');
+	function deviceFingerprint(session_id) {
+
+		var df_param = 'org_id=' + DF_ORG_ID + '&amp;session_id=' + MERCHANT_ID + session_id;
+		console.log(df_param);
+
+		var df_url = 'https://h.online-metrix.net/fp/clear.png?';
+		var df_m1  = df_url + '&amp;m=1';
+		var df_m2  = df_url + '&amp;m=2';
+
+		// TODO
+	}
+
+</script>
+
+<!-- DF START -->
+
+<!--
+<p style="background:url(https://h.online-metrix.net/fp/clear.png?org_id=1snn5n9w&amp;session_id=kr9502100471488721424567&amp;m=1)"></p>
+<img src="https://h.online-metrix.net/fp/clear.png?org_id=1snn5n9w&amp;session_id=kr9502100471488721424567&amp;m=2" width="1" height="1" />
+-->
+
+<!-- DF END -->
+
+</body>
+</html>
