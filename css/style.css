@@ -15,7 +15,7 @@ body {
 	font: 100%/1 'PT Serif', serif;
 	background: #fff;
 	color: #333;
-	border-top: 0.5em solid #cc8500;	
+	border-top: 10px solid #cc8500;	
 }
 
 :active, :focus {
@@ -44,8 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #masthead {
-	margin-top: 3em;
-	padding: 2em 0 0.5em 0;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -157,8 +155,7 @@ form input.qty {
 	background: #cc8500;
 	position: absolute;
 	color: #fff;
-	left: 0;
-	bottom: 0;
+
 }
 
 body#checkout-page #site-info {
